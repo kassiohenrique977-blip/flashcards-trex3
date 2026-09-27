@@ -3,8 +3,10 @@ import { onKey, offKey, KEY_UP, KEY_DOWN, KEY_SELECT, KEY_EVENT_CLICK } from '@z
 import { setPageBrightTime } from '@zos/display'
 import { createDeviceStore } from '../../lib/device-store.js'
 import { loadDeckForStudy, StudySession } from '../../lib/study.js'
+import { isDemoDeck } from '../../lib/demo-deck.js'
 import { parseParams } from '../../lib/format.js'
 import { uuid } from '../../lib/ids.js'
+import { t } from '../text.js'
 import { COLOR, label, button, scrollingText, setText, removeAll } from '../ui.js'
 
 // Frente: "12 / 30" · pergunta · [MOSTRAR] (ou SELECT).
@@ -28,6 +30,8 @@ Page({
     const data = loadDeckForStudy(store, state.deckId, Date.now())
 
     state.store = store
+    // O deck de demonstração é só do relógio: nada dele vai para o celular.
+    state.local = isDemoDeck(state.deckId)
     state.cards = data.cards
     state.indexById = {}
     data.cards.forEach((card, i) => (state.indexById[card.i] = i))
@@ -67,15 +71,15 @@ Page({
 
     if (!state.revealed) {
       add(scrollingText({ x: 70, y: 72, w: 340, h: 270, text: card.f, size: 36 }))
-      add(button({ x: 90, y: 355, w: 300, h: 80, text: 'MOSTRAR', size: 34, color: COLOR.primary, onClick: () => this.reveal() }))
+      add(button({ x: 90, y: 355, w: 300, h: 80, text: t('study.show'), size: 34, color: COLOR.primary, onClick: () => this.reveal() }))
       return
     }
 
     add(scrollingText({ x: 70, y: 72, w: 340, h: 188, text: card.b, size: 36, color: COLOR.accent }))
-    add(button({ x: 88, y: 270, w: 148, h: 72, text: 'ERREI', size: 28, color: COLOR.again, onClick: () => this.answer('AGAIN') }))
-    add(button({ x: 244, y: 270, w: 148, h: 72, text: 'DIFÍCIL', size: 28, color: COLOR.hard, textColor: COLOR.dark, onClick: () => this.answer('HARD') }))
-    add(button({ x: 88, y: 350, w: 148, h: 72, text: 'BOM', size: 28, color: COLOR.good, onClick: () => this.answer('GOOD') }))
-    add(button({ x: 244, y: 350, w: 148, h: 72, text: 'FÁCIL', size: 28, color: COLOR.easy, onClick: () => this.answer('EASY') }))
+    add(button({ x: 88, y: 270, w: 148, h: 72, text: t('study.again'), size: 28, color: COLOR.again, onClick: () => this.answer('AGAIN') }))
+    add(button({ x: 244, y: 270, w: 148, h: 72, text: t('study.hard'), size: 28, color: COLOR.hard, textColor: COLOR.dark, onClick: () => this.answer('HARD') }))
+    add(button({ x: 88, y: 350, w: 148, h: 72, text: t('study.good'), size: 28, color: COLOR.good, onClick: () => this.answer('GOOD') }))
+    add(button({ x: 244, y: 350, w: 148, h: 72, text: t('study.easy'), size: 28, color: COLOR.easy, onClick: () => this.answer('EASY') }))
   },
 
   reveal() {
@@ -89,7 +93,7 @@ Page({
     if (!state.revealed || state.finished || state.session.isFinished) return
     const result = state.session.answer(rating)
     // A resposta vai para a outbox na hora; o deck é gravado em lotes.
-    state.store.addToOutbox(result.review)
+    if (!state.local) state.store.addToOutbox(result.review)
     state.store.recordToday(state.deckId, state.day.start, result.review.ps)
     const index = state.indexById[result.card.i]
     if (index !== undefined) state.cards[index] = result.card

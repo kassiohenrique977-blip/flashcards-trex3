@@ -75,6 +75,15 @@ export function createStore(open, options = {}) {
       meta().setItem('onboarded', value === true)
     },
 
+    /** O deck de demonstração já foi criado (só acontece uma vez). */
+    isDemoSeeded() {
+      return meta().getItem('demoSeeded', false) === true
+    },
+
+    setDemoSeeded(value) {
+      meta().setItem('demoSeeded', value === true)
+    },
+
     selectedDeckId() {
       return meta().getItem('selectedDeck', null)
     },

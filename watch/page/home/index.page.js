@@ -13,7 +13,9 @@ import {
 } from '@zos/interaction'
 import { createDeviceStore } from '../../lib/device-store.js'
 import { loadDeckForStudy } from '../../lib/study.js'
+import { ensureDemoDeck } from '../../lib/demo-deck.js'
 import { cardCountLabel } from '../../lib/format.js'
+import { t } from '../text.js'
 import { COLOR, label, button, setText, removeAll } from '../ui.js'
 
 // Tela inicial: "FLASHCARDS" · "Baralho: Inglês" · "12 cartões" · [COMEÇAR].
@@ -37,7 +39,7 @@ Page({
       return
     }
     label({ x: 90, y: 40, w: 300, h: 50, text: 'FLASHCARDS', size: 30, color: COLOR.accent })
-    this.state.status = label({ x: 60, y: 200, w: 360, h: 60, text: 'Preparando...', size: 32, color: COLOR.muted })
+    this.state.status = label({ x: 60, y: 200, w: 360, h: 60, text: t('home.preparing'), size: 32, color: COLOR.muted })
     onKey({ callback: (key, event) => this.onKeyPress(key, event) })
     onGesture({ callback: (event) => this.onSwipe(event) })
     // Deixa o "Preparando..." aparecer antes de ler os arquivos.
@@ -55,6 +57,8 @@ Page({
 
   refresh() {
     const store = createDeviceStore()
+    // Antes de qualquer sincronização já existe algo para estudar.
+    ensureDemoDeck(store, t, Date.now())
     const decks = store.decks()
     const selected = store.selectedDeckId()
     const index = decks.findIndex((deck) => deck.id === selected)
@@ -73,9 +77,9 @@ Page({
 
     if (state.decks.length === 0) {
       state.due = 0
-      add(label({ x: 60, y: 120, w: 360, h: 150, text: 'Nenhum baralho.\nSincronize com o celular.', size: 32, wrap: true }))
-      add(button({ x: 90, y: 292, w: 300, h: 72, text: 'SINCRONIZAR', size: 30, color: COLOR.primary, onClick: () => this.openSync() }))
-      add(button({ x: 120, y: 380, w: 240, h: 56, text: 'COMO USAR', size: 24, color: COLOR.neutral, onClick: () => this.openTutorial() }))
+      add(label({ x: 60, y: 120, w: 360, h: 150, text: t('home.empty'), size: 32, wrap: true }))
+      add(button({ x: 90, y: 292, w: 300, h: 72, text: t('home.sync'), size: 30, color: COLOR.primary, onClick: () => this.openSync() }))
+      add(button({ x: 120, y: 380, w: 240, h: 56, text: t('home.howTo'), size: 24, color: COLOR.neutral, onClick: () => this.openTutorial() }))
       return
     }
 
@@ -83,17 +87,18 @@ Page({
     const study = loadDeckForStudy(state.store, deck.id, Date.now())
     state.due = study.queue.length
 
-    add(label({ x: 50, y: 100, w: 380, h: 80, text: 'Baralho: ' + deck.name, size: 34, wrap: true }))
-    add(label({ x: 60, y: 185, w: 360, h: 60, text: cardCountLabel(state.due), size: 40, color: COLOR.accent }))
+    add(label({ x: 50, y: 100, w: 380, h: 80, text: t('home.deckPrefix') + deck.name, size: 34, wrap: true }))
+    add(label({ x: 60, y: 185, w: 360, h: 60, text: cardCountLabel(state.due, t), size: 40, color: COLOR.accent }))
     if (state.due > 0) {
-      add(button({ x: 90, y: 260, w: 300, h: 90, text: 'COMEÇAR', size: 36, color: COLOR.good, onClick: () => this.start() }))
+      add(button({ x: 90, y: 260, w: 300, h: 90, text: t('home.start'), size: 36, color: COLOR.good, onClick: () => this.start() }))
     } else {
-      add(label({ x: 60, y: 270, w: 360, h: 70, text: 'Tudo em dia!', size: 32, color: COLOR.good }))
+      add(label({ x: 60, y: 270, w: 360, h: 70, text: t('home.allDone'), size: 32, color: COLOR.good }))
     }
     if (state.decks.length > 1) {
-      add(label({ x: 110, y: 352, w: 260, h: 36, text: state.index + 1 + ' / ' + state.decks.length + ' · deslize', size: 24, color: COLOR.muted }))
+      const pager = state.index + 1 + ' / ' + state.decks.length + ' · ' + t('home.swipe')
+      add(label({ x: 110, y: 352, w: 260, h: 36, text: pager, size: 24, color: COLOR.muted }))
     }
-    add(button({ x: 130, y: 392, w: 220, h: 56, text: 'SINCRONIZAR', size: 26, color: COLOR.neutral, onClick: () => this.openSync() }))
+    add(button({ x: 130, y: 392, w: 220, h: 56, text: t('home.sync'), size: 26, color: COLOR.neutral, onClick: () => this.openSync() }))
   },
 
   move(delta) {

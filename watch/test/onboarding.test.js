@@ -3,14 +3,26 @@ import assert from 'node:assert/strict'
 import { TUTORIAL_STEPS, QR_STEP, isLastStep, nextStep } from '../lib/onboarding.js'
 import { APP_DOWNLOAD_LABEL, APP_DOWNLOAD_URL } from '../lib/config.js'
 import { createStore } from '../lib/store.js'
+import { ENGLISH, englishText } from '../lib/strings.js'
+import { PORTUGUES } from '../scripts/strings-pt.mjs'
 import { memoryBackend } from './helpers.js'
 
-test('todo passo tem título e texto', () => {
+test('todo passo tem título e texto traduzidos', () => {
   assert.ok(TUTORIAL_STEPS.length >= 3)
   for (const step of TUTORIAL_STEPS) {
-    assert.ok(step.title.length > 0, JSON.stringify(step))
-    assert.ok(step.text.length > 0, step.title)
     assert.ok(['text', 'qr', 'confirm'].includes(step.kind), step.kind)
+    for (const chave of [step.title, step.text]) {
+      assert.ok(ENGLISH[chave], 'falta ' + chave + ' em inglês')
+      assert.ok(PORTUGUES[chave], 'falta ' + chave + ' em português')
+      assert.notEqual(englishText(chave), chave)
+    }
+  }
+})
+
+test('os botões do tutorial também são traduzidos', () => {
+  for (const chave of ['tour.next', 'tour.yes', 'tour.notYet']) {
+    assert.ok(ENGLISH[chave], chave)
+    assert.ok(PORTUGUES[chave], chave)
   }
 })
 

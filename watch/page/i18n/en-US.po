@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Language: en-US\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "home.preparing"
+msgstr "Loading..."
+
+msgid "home.deckPrefix"
+msgstr "Deck: "
+
+msgid "home.empty"
+msgstr "No decks yet.\nSync with your phone."
+
+msgid "home.start"
+msgstr "START"
+
+msgid "home.allDone"
+msgstr "All caught up!"
+
+msgid "home.swipe"
+msgstr "swipe"
+
+msgid "home.sync"
+msgstr "SYNC"
+
+msgid "home.howTo"
+msgstr "HOW IT WORKS"
+
+msgid "card.one"
+msgstr "card"
+
+msgid "card.many"
+msgstr "cards"
+
+msgid "study.show"
+msgstr "SHOW"
+
+msgid "study.again"
+msgstr "AGAIN"
+
+msgid "study.hard"
+msgstr "HARD"
+
+msgid "study.good"
+msgstr "GOOD"
+
+msgid "study.easy"
+msgstr "EASY"
+
+msgid "summary.title"
+msgstr "SESSION DONE"
+
+msgid "summary.hit.one"
+msgstr "correct"
+
+msgid "summary.hit.many"
+msgstr "correct"
+
+msgid "summary.hard.one"
+msgstr "hard"
+
+msgid "summary.hard.many"
+msgstr "hard"
+
+msgid "summary.miss.one"
+msgstr "miss"
+
+msgid "summary.miss.many"
+msgstr "misses"
+
+msgid "summary.time"
+msgstr "Time: "
+
+msgid "summary.ok"
+msgstr "OK"
+
+msgid "sync.title"
+msgstr "SYNC"
+
+msgid "sync.connecting"
+msgstr "Connecting..."
+
+msgid "sync.sending"
+msgstr "Sending answers"
+
+msgid "sync.receiving"
+msgstr "Receiving cards..."
+
+msgid "sync.finishing"
+msgstr "Finishing..."
+
+msgid "sync.done"
+msgstr "Synced!"
+
+msgid "sync.failed"
+msgstr "Not synced"
+
+msgid "sync.sent"
+msgstr "Sent: "
+
+msgid "sync.received"
+msgstr "Received: "
+
+msgid "sync.ok"
+msgstr "OK"
+
+msgid "sync.retry"
+msgstr "RETRY"
+
+msgid "sync.back"
+msgstr "BACK"
+
+msgid "answer.one"
+msgstr "answer"
+
+msgid "answer.many"
+msgstr "answers"
+
+msgid "change.one"
+msgstr "change"
+
+msgid "change.many"
+msgstr "changes"
+
+msgid "error.unauthorized"
+msgstr "Wrong pairing code. Check it in the Zepp App: Flashcards > Settings."
+
+msgid "error.noServer"
+msgstr "Open the Flashcards app on your phone, on the Watch tab, and try again."
+
+msgid "error.protocol"
+msgstr "Different versions. Update the phone and watch apps."
+
+msgid "error.pushRejected"
+msgstr "The phone refused the answers. Try again."
+
+msgid "error.badResponse"
+msgstr "Invalid answer from the phone. Try again."
+
+msgid "error.generic"
+msgstr "No connection to the phone. Check Bluetooth and the Zepp App."
+
+msgid "tour.welcome.title"
+msgstr "FLASHCARDS"
+
+msgid "tour.welcome.text"
+msgstr "Study your cards on the watch, offline, without carrying your phone."
+
+msgid "tour.how.title"
+msgstr "HOW IT WORKS"
+
+msgid "tour.how.text"
+msgstr "1. Create or import cards in the phone app.\n2. Tap SYNC.\n3. Study here, offline."
+
+msgid "tour.study.title"
+msgstr "STUDYING"
+
+msgid "tour.study.text"
+msgstr "Tap SHOW and answer: AGAIN, HARD, GOOD or EASY. Your answer sets when the card comes back."
+
+msgid "tour.back.title"
+msgstr "BACK TO THE PHONE"
+
+msgid "tour.back.text"
+msgstr "Your answers stay here until you sync again. Nothing is lost."
+
+msgid "tour.qr.title"
+msgstr "PHONE APP"
+
+msgid "tour.qr.text"
+msgstr "Scan the code with your phone camera to install:"
+
+msgid "tour.confirm.title"
+msgstr "ALL SET?"
+
+msgid "tour.confirm.text"
+msgstr "Have you installed the Flashcards app on your phone?"
+
+msgid "tour.next"
+msgstr "NEXT"
+
+msgid "tour.yes"
+msgstr "YES, START"
+
+msgid "tour.notYet"
+msgstr "NOT YET"
+
+msgid "demo.name"
+msgstr "Demo"
+
+msgid "demo.q1"
+msgstr "What is this app for?"
+
+msgid "demo.a1"
+msgstr "Studying flashcards on the watch, offline"
+
+msgid "demo.q2"
+msgstr "How do cards get to the watch?"
+
+msgid "demo.a2"
+msgstr "From the phone app, by tapping SYNC"
+
+msgid "demo.q3"
+msgstr "What does AGAIN mean?"
+
+msgid "demo.a3"
+msgstr "You forgot the card: it comes back in this session"
+
+msgid "demo.q4"
+msgstr "What does EASY mean?"
+
+msgid "demo.a4"
+msgstr "It was effortless: the card comes back much later"
+
+msgid "demo.q5"
+msgstr "Do you need internet to study?"
+
+msgid "demo.a5"
+msgstr "No. Everything works offline on the watch"
+
+msgid "demo.q6"
+msgstr "Where do your answers go?"
+
+msgid "demo.a6"
+msgstr "They stay on the watch until the next sync"
+
+msgid "demo.q7"
+msgstr "What is spaced repetition?"
+
+msgid "demo.a7"
+msgstr "Reviewing right before you would forget"
+
+msgid "demo.q8"
+msgstr "Which button shows the answer?"
+
+msgid "demo.a8"
+msgstr "SHOW, or the select button on the watch"

@@ -2,8 +2,9 @@ export function countLabel(count, singular, plural) {
   return count === 1 ? '1 ' + singular : count + ' ' + plural
 }
 
-export function cardCountLabel(count) {
-  return countLabel(count, 'cartão', 'cartões')
+/** "12 cartões" / "12 cards", no idioma do relógio. [t] é a função de texto. */
+export function cardCountLabel(count, t) {
+  return countLabel(count, t('card.one'), t('card.many'))
 }
 
 /** "8:32" */

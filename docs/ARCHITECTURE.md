@@ -27,6 +27,15 @@ outbox de respostas no relógio; recálculo por replay do log de revisões.
 | Página de pull só por quantidade | Quantidade **e** tamanho (~16 mil caracteres) | Cartões longos gerariam mensagens BLE enormes |
 | Pull parava na primeira página vazia | Continua enquanto `hasMore` e o cursor andar | Cartões de decks fora do relógio geram páginas "vazias" que ainda avançam o cursor |
 | Botões físicos a definir | SELECT = mostrar/BOM, UP = FÁCIL, DOWN = ERREI; BACK nunca interceptado | Mapeamento **[VALIDAR]** no aparelho |
+| Textos do relógio só em português | Inglês em `lib/strings.js` (base) + `page/i18n/{en-US,pt-BR,pt-PT}.po` gerados por `npm run i18n` | A doc do Zepp OS **não diz** o que acontece quando o idioma do relógio não tem `.po` **[DOC]**; com o inglês em JS, o pior caso é aparecer inglês, nunca a chave crua. O `.po` compila para `assets/raw/locale/*.btxt`, com as quebras de linha resolvidas (verificado no `.zab`) |
+| Nada para estudar antes da primeira sincronização | Deck de demonstração de 8 cartões criado dentro do relógio (`lib/demo-deck.js`) | O app (e a avaliação da loja da Zepp) precisa funcionar sem o app do celular. Ele entra pelo mesmo `applyChanges` das mudanças do protocolo, não vai para a outbox e o celular nunca o vê |
+
+**Textos e idiomas do relógio:** o inglês fica no código (`watch/lib/strings.js`) e é a
+base de tudo; `watch/scripts/generate-po.mjs` gera os três `.po` a partir dele e das
+traduções em `watch/scripts/strings-pt.mjs`. O `getText` de `@zos/i18n` é consultado
+primeiro; se o idioma não tiver tradução (ou faltar uma chave), o texto cai no inglês.
+Um teste compara os `.po` do disco com as fontes, então eles não ficam para trás.
+O Settings App não tem i18n documentado: a tela mostra inglês e português juntos.
 
 **Segurança da ponte local:** o servidor escuta só em `127.0.0.1` e só enquanto a aba
 "Relógio" está ativa (foreground service `dataSync`, desliga após 10 min parado). Toda

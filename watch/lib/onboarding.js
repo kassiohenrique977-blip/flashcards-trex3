@@ -1,38 +1,15 @@
 // Roteiro da primeira abertura do app no relógio: explica o funcionamento, mostra o
 // QR code do app do celular e termina com uma pergunta de confirmação.
 // `kind` diz como a página desenha o passo: texto, QR code ou pergunta.
+// Os textos são chaves de tradução (lib/strings.js e page/i18n/*.po).
 
 export const TUTORIAL_STEPS = [
-  {
-    kind: 'text',
-    title: 'FLASHCARDS',
-    text: 'Estude seus cartões no relógio, sem internet e sem levar o celular.',
-  },
-  {
-    kind: 'text',
-    title: 'COMO FUNCIONA',
-    text: '1. Crie ou importe cartões no app do celular.\n2. Toque em SINCRONIZAR.\n3. Estude aqui, offline.',
-  },
-  {
-    kind: 'text',
-    title: 'ESTUDANDO',
-    text: 'Toque em MOSTRAR e responda: ERREI, DIFÍCIL, BOM ou FÁCIL. Cada resposta define quando o cartão volta.',
-  },
-  {
-    kind: 'text',
-    title: 'DE VOLTA AO CELULAR',
-    text: 'Suas respostas ficam guardadas aqui até você sincronizar de novo. Nada se perde.',
-  },
-  {
-    kind: 'qr',
-    title: 'APP DO CELULAR',
-    text: 'Leia o código com a câmera do celular para instalar:',
-  },
-  {
-    kind: 'confirm',
-    title: 'TUDO PRONTO?',
-    text: 'Você já instalou o app Flashcards no celular?',
-  },
+  { kind: 'text', title: 'tour.welcome.title', text: 'tour.welcome.text' },
+  { kind: 'text', title: 'tour.how.title', text: 'tour.how.text' },
+  { kind: 'text', title: 'tour.study.title', text: 'tour.study.text' },
+  { kind: 'text', title: 'tour.back.title', text: 'tour.back.text' },
+  { kind: 'qr', title: 'tour.qr.title', text: 'tour.qr.text' },
+  { kind: 'confirm', title: 'tour.confirm.title', text: 'tour.confirm.text' },
 ]
 
 export function isLastStep(index) {

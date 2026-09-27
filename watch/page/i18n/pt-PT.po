@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Language: pt-PT\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "home.preparing"
+msgstr "Preparando..."
+
+msgid "home.deckPrefix"
+msgstr "Baralho: "
+
+msgid "home.empty"
+msgstr "Nenhum baralho.\nSincronize com o telemóvel."
+
+msgid "home.start"
+msgstr "COMEÇAR"
+
+msgid "home.allDone"
+msgstr "Tudo em dia!"
+
+msgid "home.swipe"
+msgstr "deslize"
+
+msgid "home.sync"
+msgstr "SINCRONIZAR"
+
+msgid "home.howTo"
+msgstr "COMO USAR"
+
+msgid "card.one"
+msgstr "cartão"
+
+msgid "card.many"
+msgstr "cartões"
+
+msgid "study.show"
+msgstr "MOSTRAR"
+
+msgid "study.again"
+msgstr "ERREI"
+
+msgid "study.hard"
+msgstr "DIFÍCIL"
+
+msgid "study.good"
+msgstr "BOM"
+
+msgid "study.easy"
+msgstr "FÁCIL"
+
+msgid "summary.title"
+msgstr "SESSÃO CONCLUÍDA"
+
+msgid "summary.hit.one"
+msgstr "acerto"
+
+msgid "summary.hit.many"
+msgstr "acertos"
+
+msgid "summary.hard.one"
+msgstr "difícil"
+
+msgid "summary.hard.many"
+msgstr "difíceis"
+
+msgid "summary.miss.one"
+msgstr "erro"
+
+msgid "summary.miss.many"
+msgstr "erros"
+
+msgid "summary.time"
+msgstr "Tempo: "
+
+msgid "summary.ok"
+msgstr "OK"
+
+msgid "sync.title"
+msgstr "SINCRONIZAR"
+
+msgid "sync.connecting"
+msgstr "Conectando..."
+
+msgid "sync.sending"
+msgstr "Enviando respostas"
+
+msgid "sync.receiving"
+msgstr "Recebendo cartões..."
+
+msgid "sync.finishing"
+msgstr "Concluindo..."
+
+msgid "sync.done"
+msgstr "Sincronizado!"
+
+msgid "sync.failed"
+msgstr "Não sincronizou"
+
+msgid "sync.sent"
+msgstr "Enviadas: "
+
+msgid "sync.received"
+msgstr "Recebidas: "
+
+msgid "sync.ok"
+msgstr "OK"
+
+msgid "sync.retry"
+msgstr "TENTAR"
+
+msgid "sync.back"
+msgstr "VOLTAR"
+
+msgid "answer.one"
+msgstr "resposta"
+
+msgid "answer.many"
+msgstr "respostas"
+
+msgid "change.one"
+msgstr "alteração"
+
+msgid "change.many"
+msgstr "alterações"
+
+msgid "error.unauthorized"
+msgstr "Código de pareamento inválido. Confira no Zepp App: Flashcards > Configurações."
+
+msgid "error.noServer"
+msgstr "Abra o app Flashcards no telemóvel, na aba Relógio, e tente de novo."
+
+msgid "error.protocol"
+msgstr "Versões diferentes. Atualize o app do telemóvel e o do relógio."
+
+msgid "error.pushRejected"
+msgstr "O telemóvel recusou as respostas. Tente de novo."
+
+msgid "error.badResponse"
+msgstr "Resposta inválida do telemóvel. Tente de novo."
+
+msgid "error.generic"
+msgstr "Sem conexão com o telemóvel. Verifique o Bluetooth e o Zepp App."
+
+msgid "tour.welcome.title"
+msgstr "FLASHCARDS"
+
+msgid "tour.welcome.text"
+msgstr "Estude seus cartões no relógio, sem internet e sem levar o telemóvel."
+
+msgid "tour.how.title"
+msgstr "COMO FUNCIONA"
+
+msgid "tour.how.text"
+msgstr "1. Crie ou importe cartões no app do telemóvel.\n2. Toque em SINCRONIZAR.\n3. Estude aqui, offline."
+
+msgid "tour.study.title"
+msgstr "ESTUDANDO"
+
+msgid "tour.study.text"
+msgstr "Toque em MOSTRAR e responda: ERREI, DIFÍCIL, BOM ou FÁCIL. Cada resposta define quando o cartão volta."
+
+msgid "tour.back.title"
+msgstr "DE VOLTA AO TELEMÓVEL"
+
+msgid "tour.back.text"
+msgstr "Suas respostas ficam guardadas aqui até você sincronizar de novo. Nada se perde."
+
+msgid "tour.qr.title"
+msgstr "APP DO TELEMÓVEL"
+
+msgid "tour.qr.text"
+msgstr "Leia o código com a câmara do telemóvel para instalar:"
+
+msgid "tour.confirm.title"
+msgstr "TUDO PRONTO?"
+
+msgid "tour.confirm.text"
+msgstr "Você já instalou o app Flashcards no telemóvel?"
+
+msgid "tour.next"
+msgstr "PRÓXIMO"
+
+msgid "tour.yes"
+msgstr "SIM, COMEÇAR"
+
+msgid "tour.notYet"
+msgstr "AINDA NÃO"
+
+msgid "demo.name"
+msgstr "Demonstração"
+
+msgid "demo.q1"
+msgstr "Para que serve este app?"
+
+msgid "demo.a1"
+msgstr "Estudar flashcards no relógio, offline"
+
+msgid "demo.q2"
+msgstr "Como os cartões chegam ao relógio?"
+
+msgid "demo.a2"
+msgstr "Do app do telemóvel, tocando em SINCRONIZAR"
+
+msgid "demo.q3"
+msgstr "O que significa ERREI?"
+
+msgid "demo.a3"
+msgstr "Você esqueceu o cartão: ele volta nesta sessão"
+
+msgid "demo.q4"
+msgstr "O que significa FÁCIL?"
+
+msgid "demo.a4"
+msgstr "Não custou nada: o cartão volta bem mais tarde"
+
+msgid "demo.q5"
+msgstr "Precisa de internet para estudar?"
+
+msgid "demo.a5"
+msgstr "Não. Tudo funciona offline no relógio"
+
+msgid "demo.q6"
+msgstr "Para onde vão suas respostas?"
+
+msgid "demo.a6"
+msgstr "Ficam no relógio até a próxima sincronização"
+
+msgid "demo.q7"
+msgstr "O que é repetição espaçada?"
+
+msgid "demo.a7"
+msgstr "Revisar pouco antes de você esquecer"
+
+msgid "demo.q8"
+msgstr "Qual botão mostra a resposta?"
+
+msgid "demo.a8"
+msgstr "MOSTRAR, ou o botão de seleção do relógio"

@@ -10,9 +10,12 @@
     },
     "icon": "icon.png",
     "vender": "flashcards",
-    "description": "Flashcards com repetição espaçada, estudo offline"
+    "description": "Spaced-repetition flashcards, study offline on your watch"
   },
-  "permissions": ["data:os.device.info", "device:os.local_storage"],
+  "permissions": [
+    "data:os.device.info",
+    "device:os.local_storage"
+  ],
   "runtime": {
     "apiVersion": {
       "compatible": "1.0",
@@ -50,6 +53,12 @@
   },
   "i18n": {
     "en-US": {
+      "appName": "Flashcards"
+    },
+    "pt-BR": {
+      "appName": "Flashcards"
+    },
+    "pt-PT": {
       "appName": "Flashcards"
     }
   },

@@ -7,6 +7,7 @@
   "scripts": {
     "test": "node --test \"test/*.test.js\"",
     "icon": "node scripts/generate-icon.mjs",
+    "i18n": "node scripts/generate-po.mjs",
     "dev": "zeus dev",
     "build": "zeus build",
     "preview": "zeus preview",

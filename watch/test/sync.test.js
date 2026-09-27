@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { runSync, confirmedIds, syncErrorMessage, SyncError } from '../lib/sync.js'
+import { runSync, confirmedIds, syncErrorKey, SyncError } from '../lib/sync.js'
+import { englishText } from '../lib/strings.js'
 import { createStore } from '../lib/store.js'
 import { StudySession, loadDeckForStudy } from '../lib/study.js'
 import { createFakePhone } from './fake-phone.js'
@@ -159,8 +160,16 @@ test('confirmedIds considera aceitas, repetidas e recusadas', () => {
   assert.deepEqual(confirmedIds(batch, null), [])
 })
 
-test('mensagens de erro para a tela', () => {
-  assert.match(syncErrorMessage({ code: 'UNAUTHORIZED' }), /pareamento/)
-  assert.match(syncErrorMessage({ code: 'NO_SERVER' }), /aba Relógio/)
-  assert.match(syncErrorMessage(new Error('timeout')), /Bluetooth/)
+test('cada erro tem um texto de tela, inclusive o erro desconhecido', () => {
+  assert.equal(syncErrorKey({ code: 'UNAUTHORIZED' }), 'error.unauthorized')
+  assert.equal(syncErrorKey({ code: 'NO_SERVER' }), 'error.noServer')
+  assert.equal(syncErrorKey({ code: 'PROTOCOL' }), 'error.protocol')
+  assert.equal(syncErrorKey({ code: 'PUSH_REJECTED' }), 'error.pushRejected')
+  assert.equal(syncErrorKey({ code: 'BAD_RESPONSE' }), 'error.badResponse')
+  assert.equal(syncErrorKey(new Error('timeout')), 'error.generic')
+  // A chave sempre tem texto: nenhuma tela mostra "error.algo" para o usuário.
+  for (const codigo of ['UNAUTHORIZED', 'NO_SERVER', 'PROTOCOL', 'PUSH_REJECTED', 'BAD_RESPONSE', 'QUALQUER']) {
+    const texto = englishText(syncErrorKey({ code: codigo }))
+    assert.ok(texto.indexOf('error.') !== 0, codigo)
+  }
 })

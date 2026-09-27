@@ -89,20 +89,20 @@ export function confirmedIds(batch, result) {
   return batch.filter((r) => done[r.id]).map((r) => r.id)
 }
 
-/** Mensagem curta para a tela do relógio. */
-export function syncErrorMessage(error) {
+/** Chave do texto curto que a tela do relógio mostra para este erro. */
+export function syncErrorKey(error) {
   switch (error && error.code) {
     case 'UNAUTHORIZED':
-      return 'Código de pareamento inválido. Confira no Zepp App: Flashcards > Configurações.'
+      return 'error.unauthorized'
     case 'NO_SERVER':
-      return 'Abra o app Flashcards no celular, na aba Relógio, e tente de novo.'
+      return 'error.noServer'
     case 'PROTOCOL':
-      return 'Versões diferentes. Atualize o app do celular e o do relógio.'
+      return 'error.protocol'
     case 'PUSH_REJECTED':
-      return 'O celular recusou as respostas. Tente de novo.'
+      return 'error.pushRejected'
     case 'BAD_RESPONSE':
-      return 'Resposta inválida do celular. Tente de novo.'
+      return 'error.badResponse'
     default:
-      return 'Sem conexão com o celular. Verifique o Bluetooth e o Zepp App.'
+      return 'error.generic'
   }
 }
