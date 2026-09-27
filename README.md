@@ -192,8 +192,8 @@ zeus preview
 3. Escolha **Amazfit T-Rex 3** na lista. No Zepp App, abra **Developer Mode → Scan** e leia
    o QR code do terminal. O app **Flashcards** aparece no relógio.
 
-> O `appId` em `watch/app.json` (`1095532`) é provisório. Para publicar na loja da Zepp,
-> crie o app em https://console.zepp.com e troque pelo `appId` gerado lá.
+> O `appId` em `watch/app.json` (`1128919`) é o do app criado em https://console.zepp.com.
+> Ele precisa ser igual ao da ficha do app no console, senão o envio do `.zab` é recusado.
 
 ## 3. Pareamento e primeira sincronização
 
