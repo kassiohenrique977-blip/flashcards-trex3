@@ -17,6 +17,8 @@ próxima sincronização.
 instalação quando o Android pedir. O mesmo endereço aparece como QR code na primeira vez que
 você abre o app no relógio.
 
+<img src="docs/qr-download.png" alt="QR code para baixar o app" width="220">
+
 **App do relógio:** ainda não está na loja da Zepp. Instale pelo modo desenvolvedor
 (veja [2. App do relógio](#2-app-do-relógio)).
 ## Como funciona
