@@ -1,0 +1,17 @@
+{
+  "name": "flashcards-watch",
+  "version": "0.1.0",
+  "description": "Mini Program Zepp OS do Flashcards para o Amazfit T-Rex 3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "icon": "node scripts/generate-icon.mjs",
+    "dev": "zeus dev",
+    "build": "zeus build",
+    "preview": "zeus preview"
+  },
+  "devDependencies": {
+    "@zeppos/zml": "0.0.43"
+  }
+}

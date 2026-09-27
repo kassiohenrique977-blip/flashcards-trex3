@@ -1,0 +1,20 @@
+# Android / Gradle
+android/.gradle/
+android/.kotlin/
+android/build/
+android/*/build/
+android/local.properties
+android/.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Zepp OS / Node
+watch/node_modules/
+watch/dist/
+watch/.zeus/
+
+# Sistema
+.DS_Store
+Thumbs.db

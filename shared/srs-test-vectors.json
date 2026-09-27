@@ -1,0 +1,159 @@
+{
+  "description": "Casos de referência do algoritmo de repetição espaçada. Lidos pelos testes Kotlin (android/core) e JS (watch/test). Qualquer divergência entre as duas implementações quebra os dois.",
+  "algorithm": "sm2-v1",
+  "config": {
+    "learningStepsMinutes": [1, 10],
+    "relearningStepsMinutes": [10],
+    "graduatingIntervalDays": 1,
+    "easyIntervalDays": 4,
+    "startingEase": 2.5,
+    "minimumEase": 1.3,
+    "easyBonus": 1.3,
+    "hardMultiplier": 1.2,
+    "lapseIntervalMultiplier": 0.0,
+    "minimumLapseIntervalDays": 1,
+    "maximumIntervalDays": 36500
+  },
+  "cases": [
+    {
+      "name": "new_again",
+      "now": 1700000000000,
+      "rating": "AGAIN",
+      "before": { "state": "NEW", "dueAt": 0, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "LEARNING", "dueAt": 1700000060000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "new_hard_uses_average_of_first_two_steps",
+      "now": 1700000000000,
+      "rating": "HARD",
+      "before": { "state": "NEW", "dueAt": 0, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "LEARNING", "dueAt": 1700000330000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "new_good_moves_to_second_step",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "NEW", "dueAt": 0, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "LEARNING", "dueAt": 1700000600000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 1 }
+    },
+    {
+      "name": "new_easy_graduates_with_easy_interval",
+      "now": 1700000000000,
+      "rating": "EASY",
+      "before": { "state": "NEW", "dueAt": 0, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1700345600000, "intervalDays": 4, "easeFactor": 2.5, "repetitions": 1, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "learning_last_step_good_graduates",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "LEARNING", "dueAt": 1700000000000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 1 },
+      "after": { "state": "REVIEW", "dueAt": 1700086400000, "intervalDays": 1, "easeFactor": 2.5, "repetitions": 1, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "learning_second_step_hard_repeats_step",
+      "now": 1700000000000,
+      "rating": "HARD",
+      "before": { "state": "LEARNING", "dueAt": 1700000000000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 1 },
+      "after": { "state": "LEARNING", "dueAt": 1700000600000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 1 }
+    },
+    {
+      "name": "learning_again_restarts_steps",
+      "now": 1700000000000,
+      "rating": "AGAIN",
+      "before": { "state": "LEARNING", "dueAt": 1700000000000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 1 },
+      "after": { "state": "LEARNING", "dueAt": 1700000060000, "intervalDays": 0, "easeFactor": 2.5, "repetitions": 0, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "review_good_on_time_multiplies_by_ease",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 10, "easeFactor": 2.5, "repetitions": 3, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1702160000000, "intervalDays": 25, "easeFactor": 2.5, "repetitions": 4, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "review_hard_grows_slowly_and_lowers_ease",
+      "now": 1700000000000,
+      "rating": "HARD",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 10, "easeFactor": 2.5, "repetitions": 3, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1701036800000, "intervalDays": 12, "easeFactor": 2.35, "repetitions": 4, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "review_easy_applies_bonus_and_raises_ease",
+      "now": 1700000000000,
+      "rating": "EASY",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 10, "easeFactor": 2.5, "repetitions": 3, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1702851200000, "intervalDays": 33, "easeFactor": 2.65, "repetitions": 4, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "review_again_is_a_lapse_into_relearning",
+      "now": 1700000000000,
+      "rating": "AGAIN",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 10, "easeFactor": 2.5, "repetitions": 3, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "RELEARNING", "dueAt": 1700000600000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 }
+    },
+    {
+      "name": "review_good_four_days_late_counts_half_the_delay",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "REVIEW", "dueAt": 1699654400000, "intervalDays": 10, "easeFactor": 2.5, "repetitions": 3, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1702592000000, "intervalDays": 30, "easeFactor": 2.5, "repetitions": 4, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "relearning_good_returns_to_review_with_lapse_interval",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "RELEARNING", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1700086400000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 1, "lapses": 1, "learningStep": 0 }
+    },
+    {
+      "name": "relearning_easy_adds_one_day",
+      "now": 1700000000000,
+      "rating": "EASY",
+      "before": { "state": "RELEARNING", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1700172800000, "intervalDays": 2, "easeFactor": 2.3, "repetitions": 1, "lapses": 1, "learningStep": 0 }
+    },
+    {
+      "name": "relearning_again_restarts_steps",
+      "now": 1700000000000,
+      "rating": "AGAIN",
+      "before": { "state": "RELEARNING", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 },
+      "after": { "state": "RELEARNING", "dueAt": 1700000600000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 }
+    },
+    {
+      "name": "relearning_hard_with_single_step_repeats_it",
+      "now": 1700000000000,
+      "rating": "HARD",
+      "before": { "state": "RELEARNING", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 },
+      "after": { "state": "RELEARNING", "dueAt": 1700000600000, "intervalDays": 1, "easeFactor": 2.3, "repetitions": 0, "lapses": 1, "learningStep": 0 }
+    },
+    {
+      "name": "ease_never_drops_below_minimum",
+      "now": 1700000000000,
+      "rating": "AGAIN",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 5, "easeFactor": 1.4, "repetitions": 5, "lapses": 2, "learningStep": 0 },
+      "after": { "state": "RELEARNING", "dueAt": 1700000600000, "intervalDays": 1, "easeFactor": 1.3, "repetitions": 0, "lapses": 3, "learningStep": 0 }
+    },
+    {
+      "name": "interval_is_capped_at_maximum",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 30000, "easeFactor": 2.5, "repetitions": 5, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 4853600000000, "intervalDays": 36500, "easeFactor": 2.5, "repetitions": 6, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "hard_always_adds_at_least_one_day",
+      "now": 1700000000000,
+      "rating": "HARD",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 1.3, "repetitions": 2, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1700172800000, "intervalDays": 2, "easeFactor": 1.3, "repetitions": 3, "lapses": 0, "learningStep": 0 }
+    },
+    {
+      "name": "good_is_always_longer_than_hard",
+      "now": 1700000000000,
+      "rating": "GOOD",
+      "before": { "state": "REVIEW", "dueAt": 1700000000000, "intervalDays": 1, "easeFactor": 1.3, "repetitions": 2, "lapses": 0, "learningStep": 0 },
+      "after": { "state": "REVIEW", "dueAt": 1700259200000, "intervalDays": 3, "easeFactor": 1.3, "repetitions": 3, "lapses": 0, "learningStep": 0 }
+    }
+  ]
+}
