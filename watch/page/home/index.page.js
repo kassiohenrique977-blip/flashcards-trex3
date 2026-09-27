@@ -1,4 +1,4 @@
-import { push } from '@zos/router'
+import { push, replace } from '@zos/router'
 import {
   onKey,
   offKey,
@@ -31,6 +31,11 @@ Page({
   },
 
   build() {
+    // Primeira abertura: o tutorial vem antes de qualquer coisa.
+    if (!createDeviceStore().isOnboarded()) {
+      replace({ url: 'page/onboarding/index.page' })
+      return
+    }
     label({ x: 90, y: 40, w: 300, h: 50, text: 'FLASHCARDS', size: 30, color: COLOR.accent })
     this.state.status = label({ x: 60, y: 200, w: 360, h: 60, text: 'Preparando...', size: 32, color: COLOR.muted })
     onKey({ callback: (key, event) => this.onKeyPress(key, event) })
@@ -69,7 +74,8 @@ Page({
     if (state.decks.length === 0) {
       state.due = 0
       add(label({ x: 60, y: 120, w: 360, h: 150, text: 'Nenhum baralho.\nSincronize com o celular.', size: 32, wrap: true }))
-      add(button({ x: 90, y: 300, w: 300, h: 80, text: 'SINCRONIZAR', size: 30, color: COLOR.primary, onClick: () => this.openSync() }))
+      add(button({ x: 90, y: 292, w: 300, h: 72, text: 'SINCRONIZAR', size: 30, color: COLOR.primary, onClick: () => this.openSync() }))
+      add(button({ x: 120, y: 380, w: 240, h: 56, text: 'COMO USAR', size: 24, color: COLOR.neutral, onClick: () => this.openTutorial() }))
       return
     }
 
@@ -102,6 +108,10 @@ Page({
     const deck = this.state.decks[this.state.index]
     if (!deck || this.state.due === 0) return
     push({ url: 'page/study/index.page', params: { deckId: deck.id } })
+  },
+
+  openTutorial() {
+    push({ url: 'page/onboarding/index.page', params: { revisit: true } })
   },
 
   openSync() {

@@ -9,9 +9,11 @@
     "icon": "node scripts/generate-icon.mjs",
     "dev": "zeus dev",
     "build": "zeus build",
-    "preview": "zeus preview"
+    "preview": "zeus preview",
+    "qr": "node scripts/generate-qr.mjs"
   },
   "devDependencies": {
-    "@zeppos/zml": "0.0.43"
+    "@zeppos/zml": "0.0.43",
+    "qrcode": "^1.5.4"
   }
 }

@@ -1,3 +1,13 @@
+import java.util.Properties
+
+// Assinatura do APK de distribuição. As senhas ficam em android/keystore.properties,
+// que não vai para o git. Sem esse arquivo, o build release sai sem assinatura
+// (serve para compilar, não para instalar).
+val keystoreProperties = Properties().apply {
+    val file = rootProject.file("keystore.properties")
+    if (file.exists()) file.inputStream().use(::load)
+}
+
 // AGP 9 já compila Kotlin sozinho (built-in Kotlin); não aplicar org.jetbrains.kotlin.android.
 plugins {
     alias(libs.plugins.android.application)
@@ -23,8 +33,20 @@ android {
         versionName = "0.1.0"
     }
 
+    signingConfigs {
+        if (keystoreProperties.isNotEmpty()) {
+            create("release") {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

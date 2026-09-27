@@ -66,6 +66,15 @@ export function createStore(open, options = {}) {
 
     decks,
 
+    /** O tutorial de primeira abertura já foi concluído. */
+    isOnboarded() {
+      return meta().getItem('onboarded', false) === true
+    },
+
+    setOnboarded(value) {
+      meta().setItem('onboarded', value === true)
+    },
+
     selectedDeckId() {
       return meta().getItem('selectedDeck', null)
     },

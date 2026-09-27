@@ -10,6 +10,15 @@ próxima sincronização.
 
 *(Capturas geradas pelos testes, com dados de exemplo: `ScreenshotTest`.)*
 
+## Baixar
+
+**App do celular (Android 8.0 ou mais novo):** baixe o `app-release.apk` em
+[Releases](https://github.com/kassiohenrique977-blip/flashcards-trex3/releases/latest), toque no arquivo e autorize a
+instalação quando o Android pedir. O mesmo endereço aparece como QR code na primeira vez que
+você abre o app no relógio.
+
+**App do relógio:** ainda não está na loja da Zepp. Instale pelo modo desenvolvedor
+(veja [2. App do relógio](#2-app-do-relógio)).
 ## Como funciona
 
 O T-Rex 3 roda **Zepp OS**, não Android. Por isso o projeto tem duas partes:

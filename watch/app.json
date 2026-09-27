@@ -27,6 +27,7 @@
         "page": {
           "pages": [
             "page/home/index.page",
+            "page/onboarding/index.page",
             "page/study/index.page",
             "page/summary/index.page",
             "page/sync/index.page"
