@@ -12,6 +12,9 @@ próxima sincronização.
 
 ## Baixar
 
+Este repositório distribui **somente o app do celular**. O app do relógio vem da loja do
+**Zepp App**.
+
 **App do celular (Android 8.0 ou mais novo):** baixe o `app-release.apk` em
 [Releases](https://github.com/kassiohenrique977-blip/flashcards-trex3/releases/latest), toque no arquivo e autorize a
 instalação quando o Android pedir. O mesmo endereço aparece como QR code na primeira vez que
@@ -19,8 +22,10 @@ você abre o app no relógio.
 
 <img src="docs/qr-download.png" alt="QR code para baixar o app" width="220">
 
-**App do relógio:** ainda não está na loja da Zepp. Instale pelo modo desenvolvedor
-(veja [2. App do relógio](#2-app-do-relógio)).
+**App do relógio (Amazfit T-Rex 3):** instale pela **loja do Zepp App** — o link entra aqui
+quando a publicação sair. O pacote `.zab` não é distribuído aqui. Para compilar a partir do
+código, veja [2. App do relógio](#2-app-do-relógio).
+
 ## Como funciona
 
 O T-Rex 3 roda **Zepp OS**, não Android. Por isso o projeto tem duas partes:
@@ -58,7 +63,7 @@ App Android (Kotlin)          Zepp App (oficial)                  Amazfit T-Rex 
 | 9. Estatísticas | ✅ |
 | 10. Testes, otimização e documentação | ✅ |
 
-**Testes:** 214 no Android (119 no `:core`, 95 no `:app`) e 67 no relógio, todos passando.
+**Testes:** 214 no Android (119 no `:core`, 95 no `:app`) e 89 no relógio, todos passando.
 O pacote do relógio compila com o `zeus build`.
 
 **Ainda não validado num T-Rex 3 real:** veja [Pontos a validar no relógio](#pontos-a-validar-no-relógio).
@@ -71,8 +76,10 @@ android/                App Android (abra esta pasta no Android Studio)
                         importador CSV, protocolo e servidor de sincronização, estatísticas
   app/                  Room, repositórios, telas Compose, foreground service de sincronização
 watch/                  Mini Program Zepp OS
-  page/                 telas do relógio: home, study, summary, sync
-  lib/                  lógica em JS puro (SRS, sessão, armazenamento, sincronização)
+  page/                 telas do relógio: home, onboarding, study, summary, sync
+  page/i18n/            traduções (en-US, pt-BR, pt-PT), geradas por `npm run i18n`
+  lib/                  lógica em JS puro (SRS, sessão, armazenamento, sincronização,
+                        textos em inglês, deck de demonstração)
   app-side/             side service (roda no Zepp App do celular)
   setting/              Settings App (código de pareamento, no Zepp App)
   test/                 testes em Node
@@ -139,7 +146,36 @@ zeus build
 O `zeus build` gera `watch/dist/*.zab`. O aviso que ele mostra sobre "intermediate products"
 é da Zepp: se preferir não incluí-los no pacote, rode `zeus prune --ip` depois do build.
 
+### Idiomas
+
+O app do relógio fala **inglês, português do Brasil e português de Portugal**, seguindo o
+idioma do relógio. O inglês é a base e mora em `watch/lib/strings.js`; as traduções são
+geradas dali para `watch/page/i18n/*.po`:
+
+```bash
+npm run i18n
+```
+
+Para mudar um texto, edite `lib/strings.js` (inglês) e `scripts/strings-pt.mjs` (português) e
+rode o comando acima — o `npm test` falha se os `.po` estiverem desatualizados. Um relógio
+num idioma sem tradução mostra o inglês, nunca a chave. O português de Portugal sai do
+brasileiro trocando o vocabulário (celular → telemóvel, câmera → câmara).
+
+O Settings App (a tela do código de pareamento, dentro do Zepp App) aparece em inglês e
+português na mesma tela: a Zepp documenta i18n só para o app do relógio.
+
+### Primeira abertura e deck de demonstração
+
+Na primeira vez, o relógio abre um **tutorial** de 6 telas (o que é o app, como estudar, o
+QR code para instalar o app do celular e a pergunta "já instalou?"). Ele também cria um
+**deck de demonstração** com 8 cartões, que fica só no relógio: dá para estudar antes de
+existir qualquer sincronização, e as respostas dele não vão para o celular. O tutorial pode
+ser reaberto depois pelo botão **COMO USAR** da tela inicial.
+
 ### Instalar no T-Rex 3 (modo desenvolvedor)
+
+Este caminho é para quem compila do código. Quem só quer usar o app instala pela loja do
+Zepp App (veja [Baixar](#baixar)).
 
 1. No **Zepp App**: Perfil → Configurações → Sobre → toque **7 vezes** no ícone do Zepp.
    Aparece a opção **Developer Mode**.
@@ -235,7 +271,7 @@ interface `CardImporter` para esse formato (veja `core/importer`).
 |---|---|---|
 | `android/core` | `.\gradlew.bat :core:test` | algoritmo (vetores compartilhados, propriedades, replay), sessão e fila, CSV, protocolo (exemplos compartilhados), rotas HTTP e autenticação, estatísticas |
 | `android/app` | `.\gradlew.bat :app:testDebugUnitTest` | Room (Robolectric), sincronização completa por HTTP com o banco real, ViewModels, capturas de tela |
-| `watch` | `npm test` | algoritmo (mesmos vetores), sessão, armazenamento, sincronização contra um celular falso (quedas, reenvios, cursor), cliente HTTP do side service, contrato do protocolo |
+| `watch` | `npm test` | algoritmo (mesmos vetores), sessão, armazenamento, sincronização contra um celular falso (quedas, reenvios, cursor), cliente HTTP do side service, contrato do protocolo, tutorial, traduções (`.po` em dia com as fontes) e deck de demonstração |
 
 As capturas de tela ficam em `android/app/build/screenshots/` depois dos testes.
 
